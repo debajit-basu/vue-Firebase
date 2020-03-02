@@ -4,6 +4,7 @@
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <h1>{{ title }}</h1>
     <Navbar />
+    <FormComponent />
     <AllFriends msg="Inside All Friend Component I Am Prop" />
     <OnlineFriends :friendProps="friends" />
   </div>
@@ -14,17 +15,20 @@
 import Navbar from './components/Navbar';
 import AllFriends from './components/AllFriends';
 import OnlineFriends from './components/OnlineFriends';
+import FormComponent from './components/FormComponent';
+
 
 export default {
   name: 'App',
   components:{
     Navbar: Navbar,
     OnlineFriends,
-    AllFriends
+    AllFriends,
+    FormComponent
   },
   data() {
     return {
-      title: 'My first vue app, wooo:) Debajit',
+      title: 'My first vue app,Debajit',
       friends: [
                 {name: "Debajit Basu" , online: false},
                 {name: "suresh mahato" , online: true},
