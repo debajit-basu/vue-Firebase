@@ -1,10 +1,13 @@
 <template>
-    <div class="form-style">
+    <div class="form-style container">
         <h3>Form Component</h3>
-        <div v-once>Original message was[ {{message}} ]</div><br/>
+        <!-- inline styling and we can also pass object here as styleObject -->
+        <div v-once
+        v-bind:style="{ color: active, fontSize: fontSize + 'px'}"
+        >Original message was[ {{message}} ]</div><br/>
         <div>{{message}}</div><br/>
         <p>Original message: "{{ message }}"</p>
-        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }} -- {{ now }}"</p>
         <button class="mt-3" v-on:click="reverseMsg()">Reverse Last String</button>
         <input class="m-2" v-model="message"><br/>
     </div>
@@ -15,6 +18,8 @@ export default {
     data(){
         return {
             message: 'Vue Js App',
+            active: "green",
+            fontSize: 20,
             reverseMsg: () => {
                 console.log("------------------")
                 this.message = this.message.split(' ').reverse().join(' ')
@@ -27,6 +32,9 @@ export default {
         reversedMessage: function () {
         // `this` points to the vm instance
             return this.message.split('').reverse().join('')
+        },
+        now: function () {
+            return Date.now()
         }
     },
 

@@ -1,7 +1,7 @@
 <template>
     <div id="online-friends">
         <h2>Online Friends Component</h2>
-        <div class="online-friend-data" v-for="(friendData , index) in friendProps" v-bind:key="index">
+        <div class="online-friend-data container" v-for="(friendData , index) in friendProps" v-bind:key="index">
 
             <span class="data-show" v-if="friendData.online">{{friendData.name}}</span>
         </div>
@@ -28,5 +28,7 @@ export default {
     }
     .data-show {
         color: green;
+    }h2 {
+        margin: 20px;
     }
 </style>

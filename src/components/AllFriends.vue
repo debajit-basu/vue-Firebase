@@ -1,10 +1,10 @@
 <template>
     <div id="all-friends">
         <h2>All Friends Component</h2>
-        <h3>{{msg}}</h3>
-        <div class="all-friend-data" v-for="(friendData , index) in friends" v-bind:key="index">
+        <h5>{{msg}}</h5>
+        <div class="all-friend-data container" v-for="(friendData , index) in friends" v-bind:key="index">
             {{friendData.name}} And
-            <span class="status-show"> Status is {{(friendData.online) ? "ONLINE" : "Offline"}}</span>
+            <span class="status-show "> Status is {{(friendData.online) ? "ONLINE" : "Offline"}}</span>
         </div>
     </div>
 </template>
@@ -38,5 +38,12 @@ export default {
         display: block;
         margin-left: 5rem;
         font-weight: 5rem;
+    }
+    
+    h2 {
+        margin: 20px;
+    }
+    h5 {
+        color: grey;
     }
 </style>
