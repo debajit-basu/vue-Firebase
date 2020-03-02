@@ -2,9 +2,9 @@
     <div id="all-friends">
         <h2>All Friends Component</h2>
         <h5>{{msg}}</h5>
-        <div class="all-friend-data container" v-for="(friendData , index) in friends" v-bind:key="index">
+        <div class="all-friend-data container" v-for="(friendData , index) in friendProps" v-bind:key="index">
             {{friendData.name}} And
-            <span class="status-show "> Status is {{(friendData.online) ? "ONLINE" : "Offline"}}</span>
+            <span class="status-show" @click="unfriend(friendData.name)"> Status is {{(friendData.online) ? "ONLINE" : "Offline"}}</span>
         </div>
     </div>
 </template>
@@ -12,19 +12,15 @@
 <script>
 export default {
     name: 'AllFriends',
-    props: ["msg"],
+    props: ["msg", "friendProps"],
     data() {
         return {
-            friends: [
-                {name: "Debajit Basu" , online: false},
-                {name: "suresh mahato" , online: true},
-                {name: "ram sarkar pal" , online: true},
-                {name: "suresh mahato" , online: true},
-                {name: "Debajit Basu1" , online: false},
-                {name: "suresh mahato1" , online: false},
-                {name: "ram sarkar pal1" , online: true},
-                {name: "suresh mahato1" , online: false}
-            ]
+            
+        }
+    },
+    methods: {
+        unfriend(name){
+            this.$emit('delete' , { name })
         }
     }
 }
@@ -38,6 +34,7 @@ export default {
         display: block;
         margin-left: 5rem;
         font-weight: 5rem;
+        cursor: pointer;
     }
     
     h2 {

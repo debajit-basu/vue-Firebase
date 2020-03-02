@@ -5,8 +5,9 @@
     <h1>{{ title }}</h1>
     <Navbar />
     <FormComponent />
-    <AllFriends msg="Inside All Friend Component I Am Prop" />
+    <AllFriends msg="Inside All Friend Component I Am Prop" :friendProps="friends" @delete="deleteFriend"/>
     <OnlineFriends :friendProps="friends" />
+    <Blogs />
   </div>
 </template>
 
@@ -16,6 +17,8 @@ import Navbar from './components/Navbar';
 import AllFriends from './components/AllFriends';
 import OnlineFriends from './components/OnlineFriends';
 import FormComponent from './components/FormComponent';
+import Blogs from './components/Blogs';
+
 
 
 export default {
@@ -24,7 +27,8 @@ export default {
     Navbar: Navbar,
     OnlineFriends,
     AllFriends,
-    FormComponent
+    FormComponent,
+    Blogs
   },
   data() {
     return {
@@ -39,7 +43,16 @@ export default {
                 {name: "ram sarkar pal1" , online: true},
                 {name: "suresh mahato1" , online: false}
             ]
-    }
+      
+      }      
+    },
+    methods: {
+        deleteFriend(payload){
+          console.log(payload)
+          this.friends = this.friends.filter((friendName) => {
+            return friendName.name !== payload.name
+          })
+      }
   }
 }
 </script>
